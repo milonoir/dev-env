@@ -1,53 +1,35 @@
-execute pathogen#infect()
+" vundle {{{1
 
-"""
-""" General settings
-"""
-syntax enable
-set noshowmode
-set number
-set numberwidth=3
-set encoding=utf8
-set cursorline
-set showcmd
-set cmdheight=1
-set wildmenu
-set ruler
-filetype indent on
+" needed to run vundle (but i want this anyways)
+set nocompatible
 
-"""
-""" Powerline status
-"""
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-set laststatus=2
+" vundle needs filtype plugins off
+" i turn it on later
+filetype plugin indent off
+syntax off
 
-"""
-""" Color settings
-"""
-if has("gui_running")
-    set t_Co=256
-endif
+" set the runtime path for vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 
-if $COLORTERM == "gnome-terminal"
-    set t_Co=256
-endif
+" start vundle environment
+call vundle#begin()
 
-set background=dark
-colorscheme badwolf
+" list of plugins {{{2
+" let Vundle manage Vundle (this is required)
+Plugin 'gmarik/Vundle.vim'
 
-"colorscheme solarized
-"call togglebg#map("<F4>")
+" to install a plugin add it here and run :PluginInstall.
+" to update the plugins run :PluginInstall! or :PluginUpdate
+" to delete a plugin remove it here and run :PluginClean
+" 
 
-"let g:solarized_termcolors=256
+" YOUR LIST OF PLUGINS GOES HERE LIKE THIS:
+Plugin 'bling/vim-airline'
 
-"""
-""" TAB settings
-"""
-set expandtab
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+" add plugins before this
+call vundle#end()
+
+" now (after vundle finished) it is save to turn filetype plugins on
+filetype plugin indent on
+syntax on
 

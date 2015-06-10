@@ -3,8 +3,10 @@
   sudo: yes
   apt: pkg={{ item }} state=installed update_cache=yes
   with_items:
-      # Shell
+      # Terminal and shell
+      - tmux
       - zsh
+      - curl
 
       # Version control
       - git
@@ -12,15 +14,26 @@
 
       # Python
       - python-dev
+      - python-pip
       - python-setuptools
       - python-virtualenv
 
 - name: Clone oh-my-zsh
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/.oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ user }}/.oh-my-zsh
 
 - name: Deploy .zshrc
-  template: src=files/environment/.zshrc dest=/home/{{ user }}/.zshrc owner={{ user }}
+  copy: src=files/environment/.zshrc dest=/home/{{ user }}/.zshrc owner={{ user }}
 
-- name: Deploy .screenrc
-  template: src=files/environment/.screenrc dest=/home/{{ user }}/.screenrc owner={{ user }}
+- name: Setup ZSH as default shell
+  sudo: yes
+  user: name={{ user }} shell=/bin/zsh
+
+- name: Deploy .tmux.conf
+  copy: src=files/environment/.tmux.conf dest=/home/{{ user }}/.tmux.conf owner={{ user }}
+
+- name: Clone Vundle
+  git: repo=https://github.com/gmarik/Vundle.vim.git dest=/home/{{ user }}/.vim/bundle/Vundle.vim
+
+- name: Deploy .vimrc
+  copy: src=files/environment/.vimrc dest=/home/{{ user }}/.vimrc owner={{ user }}
 
