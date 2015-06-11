@@ -21,19 +21,27 @@
 - name: Clone oh-my-zsh
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ user }}/.oh-my-zsh
 
-- name: Deploy .zshrc
-  copy: src=files/environment/.zshrc dest=/home/{{ user }}/.zshrc owner={{ user }}
-
-- name: Setup ZSH as default shell
+- name: Setup zsh as default shell
   sudo: yes
   user: name={{ user }} shell=/bin/zsh
-
-- name: Deploy .tmux.conf
-  copy: src=files/environment/.tmux.conf dest=/home/{{ user }}/.tmux.conf owner={{ user }}
 
 - name: Clone Vundle
   git: repo=https://github.com/gmarik/Vundle.vim.git dest=/home/{{ user }}/.vim/bundle/Vundle.vim
 
-- name: Deploy .vimrc
-  copy: src=files/environment/.vimrc dest=/home/{{ user }}/.vimrc owner={{ user }}
+- name: Install python packages
+  sudo: yes
+  pip: name={{ item }}
+  with_items:
+      - pylint
+      - pep8
+      - rope
+      - ropevim
+      - powerline-status
+
+- name: Deploy dotfiles
+  copy: src=files/environment/{{ item }} dest=/home/{{ user }}/{{ item }} owner={{ user }}
+  with_items:
+      - .zshrc
+      - .tmux.conf
+      - .vimrc
 
