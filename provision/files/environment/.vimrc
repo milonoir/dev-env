@@ -16,6 +16,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'python-rope/ropevim'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'szw/vim-tags'
 
 " End Vundle 
 call vundle#end()
@@ -52,10 +54,13 @@ set softtabstop=4
 set tabstop=4
 
 " Custom key mappings
-map <F3> :NERDTreeToggle<CR>
+noremap <F3> :NERDTreeToggle<CR>
+noremap <F4> :TlistToggle<CR>
 "map <F12> :let &background = ( &background == "dark" ? "light" : "dark" )<CR>
-map <F5> :SyntasticCheck python pylint pep8
-map <F6> :Errors<CR>
+noremap <F5> :SyntasticCheck python pylint pep8
+noremap <F6> :Errors<CR>
+"noremap <C-[> :tabprevious<CR>
+"noremap <C-]> :tabnext<CR>
 
 " Open NERDTree if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -63,6 +68,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Close vim if only NERDTree was left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Show hidden files in NERDTree
+let g:NERDTreeShowHidden=1
 
 " Code checkers
 let g:syntastic_enable_signs=1
@@ -72,4 +80,7 @@ let g:syntastic_error_symbol="X"
 let g:syntastic_warning_symbol="!"
 let g:syntastic_style_error_symbol="*"
 let g:syntastic_style_warning_symbol="+"
+
+" Auto-generate tags on file saving
+let g:vim_tags_auto_generate=1
 
