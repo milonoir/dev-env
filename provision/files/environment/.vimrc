@@ -61,6 +61,8 @@ noremap <F5> :SyntasticCheck python pylint pep8
 noremap <F6> :Errors<CR>
 "noremap <C-[> :tabprevious<CR>
 "noremap <C-]> :tabnext<CR>
+"Remove all trailing whitespace by pressing F8
+nnoremap <F8> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Open NERDTree if no files were specified
 autocmd StdinReadPre * let s:std_in=1
