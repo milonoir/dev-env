@@ -1,6 +1,11 @@
 # dev-env
 ### My \*nix development environment
 
+Prerequisites:
+* Git
+* Ansible
+* Python
+
 I use:
 
 1. **Ansible** for provisioning

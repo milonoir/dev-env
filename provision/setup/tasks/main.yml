@@ -9,7 +9,6 @@
       - curl
 
       # Version control
-      - git
       - git-core
 
       # Python
@@ -17,6 +16,9 @@
       - python-pip
       - python-setuptools
       - python-virtualenv
+
+      # Others
+      - ctags
 
 - name: Clone oh-my-zsh
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ user }}/.oh-my-zsh
@@ -44,4 +46,5 @@
       - .zshrc
       - .tmux.conf
       - .vimrc
+      - .gitconfig
 

@@ -1,0 +1,19 @@
+[user]
+    name = Milan Boleradszki
+    email = bmilan1985@gmail.com
+
+[core]
+    editor = vim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore
+
+[color]
+    ui = auto
+
+[alias]
+    st = status
+    br = branch
+    sm = submodule
+    ch = checkout
+    hist = log --oneline --graph --decorate
+
