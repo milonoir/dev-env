@@ -34,8 +34,10 @@
   sudo: yes
   pip: name={{ item }}
   with_items:
+      - virtualenv
       - pylint
       - pep8
+      - flake8
       - rope
       - ropevim
       - powerline-status
@@ -47,4 +49,13 @@
       - .tmux.conf
       - .vimrc
       - .gitconfig
+
+- name: Copy Powerline fonts
+  copy: src=files/environment/PowerlineSymbols.otf dest=/home/{{ user }}/.fonts/PowerlineSymbols.otf owner={{ user }}
+
+- name: Setup font config
+  copy: src=files/environment/10-powerline-symbols.conf dest=/home/{{ user }}/.config/fontconfig/conf.d/10-powerline-symbols.conf
+
+- name: Install new fonts
+  command: fc-cache -f /home/{{ user }}/.fonts/
 
