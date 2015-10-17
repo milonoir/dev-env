@@ -50,10 +50,16 @@
       - .vimrc
       - .gitconfig
 
+- name: Create fonts directory
+  file: path=/home/{{ user }}/.fonts state=directory
+
+- name: Create fontconfig directory
+  file: path=/home/{{ user }}/.config/fontconfig/conf.d state=directory
+
 - name: Copy Powerline fonts
   copy: src=files/environment/PowerlineSymbols.otf dest=/home/{{ user }}/.fonts/PowerlineSymbols.otf owner={{ user }}
 
-- name: Setup font config
+- name: Setup fontconfig
   copy: src=files/environment/10-powerline-symbols.conf dest=/home/{{ user }}/.config/fontconfig/conf.d/10-powerline-symbols.conf
 
 - name: Install new fonts
