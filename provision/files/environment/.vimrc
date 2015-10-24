@@ -17,7 +17,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'python-rope/ropevim'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'szw/vim-tags'
+Plugin 'Valloric/YouCompleteMe'
 
 " End Vundle 
 call vundle#end()

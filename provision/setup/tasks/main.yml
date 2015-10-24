@@ -17,9 +17,6 @@
       - python-setuptools
       - python-virtualenv
 
-      # Others
-      - ctags
-
 - name: Clone oh-my-zsh
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ user }}/.oh-my-zsh
 
@@ -64,4 +61,10 @@
 
 - name: Install new fonts
   command: fc-cache -f /home/{{ user }}/.fonts/
+
+- name: Install vim plugins
+  command: vim +PluginInstall +qall
+
+- name: Install YouCompleteMe vim plugin
+  command: /home/{{ user }}/.vim/bundle/YouCompleteMe/install.py
 
