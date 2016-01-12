@@ -8,6 +8,11 @@
       - zsh
       - curl
 
+      # Utilities
+      - vim
+      - tree
+      - cmake
+
       # Version control
       - git-core
 

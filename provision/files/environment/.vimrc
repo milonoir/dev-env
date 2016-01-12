@@ -16,7 +16,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'python-rope/ropevim'
-Plugin 'vim-scripts/taglist.vim'
 Plugin 'Valloric/YouCompleteMe'
 
 " End Vundle 
