@@ -51,6 +51,7 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+set backspace=2
 
 " Custom key mappings
 noremap <F3> :NERDTreeToggle<CR>
