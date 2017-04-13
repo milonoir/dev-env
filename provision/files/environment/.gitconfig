@@ -15,5 +15,12 @@
     br = branch
     sm = submodule
     ch = checkout
-    hist = log --oneline --graph --decorate
+    rb = rebase
+    rbi = rebase --interactive
+    rbc = rebase --continue
+    co = commit
+    ca = commit --amend
+    hist = log --oneline --graph --decorate --all
+    gerrit-review = push origin HEAD:refs/for/master
+    gerrit-draft = push origin HEAD:refs/drafts/master
 
